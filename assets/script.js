@@ -1,8 +1,10 @@
 var questionEl = document.getElementById("question-text")
 var choiceEl = document.getElementById("answer-btns")
-var nextQ = document.querySelector('qButton')
+var nextQ = document.querySelector("choice-button")
+var startBtn = document.getElementById("start-btn")
+var startEl = document.getElementById("start-screen")
 
-
+var index = [0]
 
 // array of questions and answers
     //question, choices, answers
@@ -19,12 +21,21 @@ var questions = [
     }
 ]
 
-function renderQuestion(question) {
-    questionEl.innerText = question.text
+startBtn.addEventListener('click', function() {
+    startEl.style.display = "none"
+    renderQuestion()
 
-    for (var i = 0; i < question.choices.length; i++) {
+})
+
+function renderQuestion() {
+    questionEl.innerText = questions[index].text
+
+    choiceEl.innerText = ""
+
+    for (var i = 0; i < questions[index].choices.length; i++) {
         var qButton = document.createElement('button')
-        var choices = question.choices[i]
+        qButton.classList.add('choice-button');
+        var choices = questions[index].choices[i]
         qButton.innerText = choices
         choiceEl.appendChild(qButton)
         
@@ -32,9 +43,14 @@ function renderQuestion(question) {
 }
 
 nextQ.addEventListener('click', function() {
+    index++
+    renderQuestion()
 
 })
-//start button to start quiz
+
+renderQuestion()
+
+
     // also starts timer
 //if statement for selecting choice goes to next question
     // show "wrong" for incorrect choice
