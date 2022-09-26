@@ -41,10 +41,14 @@
     align-items: center;
 }
 
-.answer-layout {
+.answer-layout button {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
+    
 }
+
+
 
 button {
     background-color: rgb(184, 119, 245);

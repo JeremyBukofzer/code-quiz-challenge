@@ -12,6 +12,12 @@ var choice2 = document.getElementById("choice2")
 var choice3 = document.getElementById("choice3")
 var choice4 = document.getElementById("choice4")
 var endScreenEl = document.getElementById("end-screen")
+var highScoresEl = document.getElementById("high-scores")
+var submitScoreEl = document.getElementById("submit-score")
+var initialsEl = document.getElementById("initials")
+var scoresEl = document.getElementById("high-scores")
+var addScoreEl = document.getElementById("add-scores")
+var viewScoresEl = document.getElementById("initials")
 
 
     //question, choices, answers
@@ -48,7 +54,9 @@ var questions = [
 let qIndex = 0;
 let timeLeft = questions.length * 15;
 
+choiceEl.style.display = "none"
 endScreenEl.style.display = "none"
+highScoresEl.style.display = "none"
 
 
 function startQuiz() {
@@ -86,6 +94,7 @@ function timerCount() {
 function renderQuestion() {
    var displayedQuestion = questions[qIndex]
    questionEl.innerText = displayedQuestion.text;
+   choiceEl.style.display = "initial"
 
    choice1.innerText = displayedQuestion.choices[0]
    choice2.innerText = displayedQuestion.choices[1]
