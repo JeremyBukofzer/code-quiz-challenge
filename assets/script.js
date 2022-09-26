@@ -1,14 +1,18 @@
+// DOM selectors
 var questionEl = document.getElementById("question-text")
+var questionScreen = document.getElementById("question-container")
 var choiceEl = document.getElementById("answer-btns")
 var startBtn = document.getElementById("start-btn")
 var startEl = document.getElementById("start-screen")
 var timerEl = document.getElementById("timer-count")
 var correct = document.getElementById("right-wrong")
+var finalScore = document.getElementById("final-score")
+var choice1 = document.getElementById("choice1")
+var choice2 = document.getElementById("choice2")
+var choice3 = document.getElementById("choice3")
+var choice4 = document.getElementById("choice4")
 
 
-var qIndex = [0]
-
-// array of questions and answers
     //question, choices, answers
 var questions = [
     {
@@ -40,7 +44,7 @@ var questions = [
 
 ]
 
-let questionNum = 0;
+let qIndex = 0;
 let timeLeft = questions.length * 15;
 
 
@@ -53,42 +57,62 @@ function startQuiz() {
 
 }
 
+function endQuiz() {
+    clearInterval(timeInterval);
+    startEl.style.display = "none"
+    finalScore.innerText = "Your Score is: " + timeLeft;
+    questionScreen.style.display = "none"
+
+}
+
 function timerCount() {
     if(timeLeft > 0){
         timerEl.innerText = "Timer: " + timeLeft;
         timeLeft--
+    } else {
+        timerEl.innerText = "Timer: " + timeLeft;
+        endQuiz()
     }
 }
     
 
 function renderQuestion() {
-    questionEl.innerText = questions[qIndex].text
+   var displayedQuestion = questions[qIndex]
+   questionEl.innerText = displayedQuestion.text;
 
-    choiceEl.innerText = ""
-
-    for (var i = 0; i < questions[qIndex].choices.length; i++) {
-        var qButton = document.createElement('button')
-        qButton.classList.add('choice-button');
-        var choices = questions[qIndex].choices[i]
-        qButton.innerText = choices
-        choiceEl.appendChild(qButton)
-        
-    }
+   choice1.innerText = displayedQuestion.choices[0]
+   choice2.innerText = displayedQuestion.choices[1]
+   choice3.innerText = displayedQuestion.choices[2]
+   choice4.innerText = displayedQuestion.choices[3]
 }
 
+function confirmAnswer(event) {
+    var answer = questions[qIndex].answer
+    var selectedChoice = event.target.innerText
+    
+    
+    if  (selectedChoice === answer){
+        correct.innerText = "CORRECT!"
+    } else {
+        correct.innerText = "WRONG!"
+        timeLeft -= 10
+    }
+
+    qIndex++;
+    if(qIndex === questions.length){
+        endQuiz()
+    } else {
+        renderQuestion()
+    }
+} 
+
+
+
 startBtn.addEventListener('click', startQuiz)
+choice1.addEventListener('click', confirmAnswer)
+choice2.addEventListener('click', confirmAnswer)
+choice3.addEventListener('click', confirmAnswer)
+choice4.addEventListener('click', confirmAnswer)
 
 
 
-    // also starts timer
-//if statement for selecting choice goes to next question
-    // show "wrong" for incorrect choice
-    // show "correct!" for correct choice
-
-// math for timer
-    //when timer reaches 0 quiz ends
-
-//enter and save initials
-//display highscores
-
-//button to try again
