@@ -1,10 +1,11 @@
 var questionEl = document.getElementById("question-text")
 var choiceEl = document.getElementById("answer-btns")
-var nextQ = document.querySelector("choice-button")
 var startBtn = document.getElementById("start-btn")
 var startEl = document.getElementById("start-screen")
+var timerEl = document.getElementById("timer-count")
 
-var index = [0]
+
+var qIndex = [0]
 
 // array of questions and answers
     //question, choices, answers
@@ -18,37 +19,50 @@ var questions = [
         text:"The condition in an if/else statement is enclosed within ____.",
         choices:["quotes", "curly brackets", "parentheses", "square brackets"],
         answer:"parentheses"   
-    }
-]
+    },
+    {
+        text:"Arrays in JavaScript can be used to store ___.",
+        choices:["numbers and strings", "other arrays", "booleans", "all of the above"],
+        answer:"all of the above"   
+    },
+    {
+        text:"String values must be enclosed within ___ when being assigned to variables.",
+        choices:["commas", "curly brackets", "quotes", "parentheses"],
+        answer:"quotes"   
+    },
+    {
+        text:"A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices:["JavaScript", "terminal/bash", "for loops", "console.log"],
+        answer:"console.log"   
+    },
+    
 
-startBtn.addEventListener('click', function() {
+]
+function startQuiz() {
     startEl.style.display = "none"
+
     renderQuestion()
 
-})
+}
+    
 
 function renderQuestion() {
-    questionEl.innerText = questions[index].text
+    questionEl.innerText = questions[qIndex].text
 
     choiceEl.innerText = ""
 
-    for (var i = 0; i < questions[index].choices.length; i++) {
+    for (var i = 0; i < questions[qIndex].choices.length; i++) {
         var qButton = document.createElement('button')
         qButton.classList.add('choice-button');
-        var choices = questions[index].choices[i]
+        var choices = questions[qIndex].choices[i]
         qButton.innerText = choices
         choiceEl.appendChild(qButton)
         
     }
 }
 
-nextQ.addEventListener('click', function() {
-    index++
-    renderQuestion()
+startBtn.addEventListener('click', startQuiz)
 
-})
-
-renderQuestion()
 
 
     // also starts timer
