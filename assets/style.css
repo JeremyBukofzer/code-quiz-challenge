@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 .container {
@@ -12,6 +13,8 @@
     
 }
 
+
+
 .tmr {
     display: flex;
     float: right;
@@ -19,12 +22,24 @@
    
 }
 
-.start {
-    display: flex;
-    justify-content: center;
-    justify-items: center;
+.view-scores {
+    margin-top: 0%;
+    background: none;
+    border: none;
 }
 
+.start, .end{
+    display: flex;
+    flex-wrap: wrap;
+    width:90%;
+    text-align: center;
+    justify-content: center;
+}
+
+.start h2 {
+    display: flex;
+    align-items: center;
+}
 
 .answer-layout {
     display: flex;
@@ -33,12 +48,20 @@
 
 button {
     background-color: rgb(184, 119, 245);
-    border-radius: 10%;
     margin: 5%;
+    font-size: 20px;
     
 }
+
+
 
 button:hover {
     background-color: rgb(88, 16, 155);
     color: white;
+}
+
+.view-scores:hover {
+    text-decoration: underline;
+    background: none;
+    color:black;
 }

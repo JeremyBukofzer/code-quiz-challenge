@@ -9,7 +9,11 @@
 </head>
 <!-- add divs for questions and buttons -->
 <body>
-    <div id="timer-count" class="tmr"></div>
+
+    <header>
+        <button id="highscores" class="view-scores">View High Scores</button>
+        <div id="timer-count" class="tmr">Timer: 75 Seconds</div>
+    </header>
     <div class="container">
         <div id="start-screen" class="start">
             <h2>Coding Quiz Challenge</h2>
@@ -27,8 +31,16 @@
             </div>
             <div id="right-wrong"></div>
         </div>
-        
-
+        <div id="end-screen" class="end">
+        <h2>Great Job!</h2>
+        <P>Enter Initials
+            <input type="text" placeholder="your initials" id="initials" />
+            <button id="submit-score">Submit Score</button>
+        </P>
+        </div>
+        <div id="high-scores" class="score-card">
+        <h2>High Scores</h2>
+        </div>
     </div>
 
 

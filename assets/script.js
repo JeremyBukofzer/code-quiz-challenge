@@ -11,6 +11,7 @@ var choice1 = document.getElementById("choice1")
 var choice2 = document.getElementById("choice2")
 var choice3 = document.getElementById("choice3")
 var choice4 = document.getElementById("choice4")
+var endScreenEl = document.getElementById("end-screen")
 
 
     //question, choices, answers
@@ -47,10 +48,13 @@ var questions = [
 let qIndex = 0;
 let timeLeft = questions.length * 15;
 
+endScreenEl.style.display = "none"
+
 
 function startQuiz() {
     timeInterval = setInterval(timerCount, 1000)
     startEl.style.display = "none"
+    endScreenEl.style.display = "none"
 
     timerCount()
     renderQuestion()
@@ -62,6 +66,9 @@ function endQuiz() {
     startEl.style.display = "none"
     finalScore.innerText = "Your Score is: " + timeLeft;
     questionScreen.style.display = "none"
+    timerEl.style.display= "none"
+    endScreenEl.style.display = "initial"
+    
 
 }
 
@@ -70,7 +77,7 @@ function timerCount() {
         timerEl.innerText = "Timer: " + timeLeft;
         timeLeft--
     } else {
-        timerEl.innerText = "Timer: " + timeLeft;
+        timerEl.style.display = "none"
         endQuiz()
     }
 }
@@ -105,6 +112,10 @@ function confirmAnswer(event) {
         renderQuestion()
     }
 } 
+
+function scoreList(){
+
+}
 
 
 
