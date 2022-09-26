@@ -3,6 +3,7 @@ var choiceEl = document.getElementById("answer-btns")
 var startBtn = document.getElementById("start-btn")
 var startEl = document.getElementById("start-screen")
 var timerEl = document.getElementById("timer-count")
+var correct = document.getElementById("right-wrong")
 
 
 var qIndex = [0]
@@ -38,11 +39,25 @@ var questions = [
     
 
 ]
+
+let questionNum = 0;
+let timeLeft = questions.length * 15;
+
+
 function startQuiz() {
+    timeInterval = setInterval(timerCount, 1000)
     startEl.style.display = "none"
 
+    timerCount()
     renderQuestion()
 
+}
+
+function timerCount() {
+    if(timeLeft > 0){
+        timerEl.innerText = "Timer: " + timeLeft;
+        timeLeft--
+    }
 }
     
 
