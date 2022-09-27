@@ -31,9 +31,10 @@
 .start, .end{
     display: flex;
     flex-wrap: wrap;
-    width:90%;
+    width:75%;
     text-align: center;
     justify-content: center;
+    
 }
 
 .start h2 {
